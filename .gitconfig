@@ -1,0 +1,9 @@
+[user]
+name = yourname
+email = ehatever@put.ac.za
+[core]
+autocrlf = input
+[http]
+proxy = http://username:password@155.238.4.87:8080
+[https]
+proxy = http://username:password@155.238.4.87:8080
