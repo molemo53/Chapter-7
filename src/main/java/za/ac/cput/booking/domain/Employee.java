@@ -1,5 +1,7 @@
 package za.ac.cput.booking.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
@@ -8,9 +10,9 @@ import java.io.Serializable;
 //import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-//@Entity
+@Entity
 public class Employee implements Serializable{
-    //@Id
+    @Id
     private Long id;
 
     private String firstName;

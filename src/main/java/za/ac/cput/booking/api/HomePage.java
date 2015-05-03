@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import za.ac.cput.booking.domain.Services;
-import za.ac.cput.booking.services.ServiceService;
+//import za.ac.cput.booking.services.ServiceService;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
 public class HomePage {
 
     @Autowired
-    private ServiceService service;
+  //  private ServiceService service;
     @RequestMapping(value = "home",method = RequestMethod.GET)
     public String Index(){
         return "This is a Home Page";
@@ -25,16 +25,11 @@ public class HomePage {
 
     @RequestMapping(value = "/course",method = RequestMethod.GET)
     public Services getService(){
-        Services services = new Services.Builder("Molemo").serviceTypeId("B1").service("Brakes").car("Ford").serviceAmount(10000).build();
+        Services services = new Services.Builder("Molemo").service("Brakes").car("Ford").build();
 
         return services;
     }
 
 
-    @RequestMapping(value = "/service", method = RequestMethod.GET)
-    public List<Services> getServices(){
 
-
-        return service.getService();
-    }
 }

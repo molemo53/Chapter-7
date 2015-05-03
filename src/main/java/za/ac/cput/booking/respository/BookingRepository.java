@@ -8,4 +8,6 @@ import za.ac.cput.booking.domain.Services;
  */
 public interface BookingRepository extends CrudRepository<Services,String> {
 public Services findCustomer(String customer);
+
+
 }

@@ -1,6 +1,6 @@
 package za.ac.cput.booking.domain;
 
-//import javax.persistence.*;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -8,18 +8,18 @@ import java.util.List;
  * Created by student on 2015/04/15.
  */
 
-//@Entity
+@Entity
 public class Services implements Serializable{
 
-  //  @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String service;
-    //@Column(unique = true)
+    @Column(unique = true)
     private String serviceCode;
     private String car;
-    //@OneToMany(cascade = CascadeType.ALL)
-    //@JoinColumn(name="service_id")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="service_id")
     private List<ServicePackage> servicePackages;
 
     private Services(){

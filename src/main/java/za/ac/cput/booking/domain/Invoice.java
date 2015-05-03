@@ -1,12 +1,16 @@
 package za.ac.cput.booking.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
  * Created by student on 2015/04/15.
  */
+@Entity
 public class Invoice implements Serializable{
 
+    @Id
     private String invoiceNum;
     private float amountOwed;
     private float amountPaid;

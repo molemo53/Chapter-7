@@ -1,10 +1,15 @@
 package za.ac.cput.booking.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Created by student on 2015/04/15.
  */
+@Entity
 public class Customer {
 
+    @Id
     private Long id;
     private String firstName;
     private String lastName;

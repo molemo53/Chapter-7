@@ -1,14 +1,19 @@
 package za.ac.cput.booking.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by student on 2015/04/15.
  */
+@Embeddable
 public class TestDrive implements Serializable{
 
+    @Id
     private Long id;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="service_id")
     private Customer customer;
     private Vehicle vehicle;
 

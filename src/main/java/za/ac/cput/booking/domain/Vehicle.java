@@ -1,12 +1,15 @@
 package za.ac.cput.booking.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
  * Created by student on 2015/04/15.
  */
+@Entity
 public class Vehicle implements Serializable{
-
+    @Id
     private Long id;
     private String make;
     private String model;

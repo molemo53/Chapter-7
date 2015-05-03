@@ -1,12 +1,17 @@
 package za.ac.cput.booking.domain;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
  * Created by student on 2015/04/16.
  */
+@Embeddable
 public class ServicePart implements Serializable{
 
+    @Id
     private Long id;
     private String itemPart;
     private float price;

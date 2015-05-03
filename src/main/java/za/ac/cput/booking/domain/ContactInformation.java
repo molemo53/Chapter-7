@@ -1,10 +1,12 @@
 package za.ac.cput.booking.domain;
 
+import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 /**
  * Created by student on 2015/04/25.
  */
+@Embeddable
 public class ContactInformation implements Serializable {
 
     private String email;
