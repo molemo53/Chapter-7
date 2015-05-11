@@ -14,7 +14,7 @@ public class Services implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String service;
+    private String serviceName;
     @Column(unique = true)
     private String serviceCode;
     private String car;
@@ -28,7 +28,7 @@ public class Services implements Serializable{
     public Services(Builder builder)
     {
         id=builder.id;
-        service=builder.service;
+        serviceName=builder.serviceName;
         serviceCode=builder.serviceCode;
         car=builder.car;
         servicePackages=builder.servicePackages;
@@ -44,8 +44,8 @@ public class Services implements Serializable{
     }
 
 
-    public String getService() {
-        return service;
+    public String getServiceName() {
+        return serviceName;
     }
 
     public String getCar() {
@@ -55,7 +55,7 @@ public class Services implements Serializable{
     public List<ServicePackage> getServicePackages() {return  servicePackages;}
 
     public static class Builder{
-        private String service;
+        private String serviceName;
         private String serviceCode;
         private String car;
         private Long id;
@@ -66,8 +66,8 @@ public class Services implements Serializable{
             this.serviceCode = serviceCode;
         }
 
-        public Builder service(String value) {
-            this.service=value;
+        public Builder serviceName(String value) {
+            this.serviceName=value;
             return  this;
         }
 
@@ -89,7 +89,7 @@ public class Services implements Serializable{
         public Builder copy(Services value)
         {
             this.id=value.getId();
-            this.service=value.getService();
+            this.serviceName=value.getServiceName();
             this.serviceCode=value.getServiceCode();
             this.car=value.getCar();
             this.servicePackages=value.getServicePackages();
@@ -123,7 +123,7 @@ public class Services implements Serializable{
     public String toString() {
         return "Services{" +
                 "id=" + id +
-                ", service='" + service + '\'' +
+                ", service='" + serviceName + '\'' +
                 ", serviceCode='" + serviceCode + '\'' +
                 ", car='" + car + '\'' +
                 '}';

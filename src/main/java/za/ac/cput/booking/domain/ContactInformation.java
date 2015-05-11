@@ -12,6 +12,11 @@ public class ContactInformation implements Serializable {
     private String email;
     private String cellNo;
 
+    private ContactInformation()
+    {
+
+    }
+
     public ContactInformation(Builder builder) {
         email=builder.email;
         cellNo=builder.cellNo;

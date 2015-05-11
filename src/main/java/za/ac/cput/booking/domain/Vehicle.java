@@ -1,7 +1,6 @@
 package za.ac.cput.booking.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -10,10 +9,11 @@ import java.io.Serializable;
 @Entity
 public class Vehicle implements Serializable{
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String make;
     private String model;
-    private Customer customer;
+
 
     private Vehicle()
     {
@@ -22,9 +22,10 @@ public class Vehicle implements Serializable{
 
     public Vehicle(Builder builder)
     {
-
+        id=builder.id;
       make=builder.make;
         model=builder.model;
+
     }
 
     public Long getId() {
@@ -39,13 +40,21 @@ public class Vehicle implements Serializable{
         return model;
     }
 
+
+
     public static class Builder {
         private Long id;
         private String make;
         private String model;
 
+
         public Builder(String make) {
             this.make = make;
+        }
+
+        public Builder id(Long value){
+            this.id=value;
+            return this;
         }
 
         public Builder model(String value){
@@ -53,10 +62,18 @@ public class Vehicle implements Serializable{
             return this;
         }
 
+
+
         public Builder copy(Vehicle value){
+            this.id=value.id;
             this.make=value.make;
             this.model=value.model;
             return this;
+        }
+
+        public Vehicle build()
+        {
+            return new Vehicle(this);
         }
     }
     }

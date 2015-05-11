@@ -23,24 +23,39 @@ public class ServicesTest {
     }
 
     @Test
-    public void testCreateCourse() throws Exception {
+    public void testCreateService() throws Exception {
         List<ServicePackage> servicePackages = new ArrayList<ServicePackage>();
         Map<String,String> values = new HashMap<String,String>();
 
-        values.put("code","S111");
-        values.put("name", "National Diploma");
+        values.put("packageCode","S111");
+        values.put("serviceName", "Oil Filtering");
 
-      //  Services services = ServiceFactory.createServices(values, servicePackages);
+        Services services = ServiceFactory.createServices(values, servicePackages);
 
 
-       // Assert.assertEquals("S111", services.getServiceCode());
+
+        Assert.assertEquals("Oil Filtering", services.getServiceName());
     }
 
     @Test
-    public void testService() throws Exception
+    public void testUpdateService() throws Exception
     {
-        Services services = new Services.Builder("Molemo").service("Brakes").car("Ford").build();
-        Assert.assertEquals("Brakes", services.getService());
+        List<ServicePackage> servicePackages = new ArrayList<ServicePackage>();
+        Map<String,String> values = new HashMap<String,String>();
+
+        values.put("packageCode","S111");
+        values.put("serviceName", "Oil Filtering");
+
+        Services services = ServiceFactory.createServices(values, servicePackages);
+
+        Services newService = new Services
+                .Builder(services.getServiceCode())
+                .copy(services)
+                .build();
+
+        Assert.assertEquals("Oil Filtering", services.getServiceName());
+
+        Assert.assertEquals("Oil Filtering", newService.getServiceName());
 
     }
 }

@@ -25,7 +25,7 @@ public class HomePage {
 
     @RequestMapping(value = "/course",method = RequestMethod.GET)
     public Services getService(){
-        Services services = new Services.Builder("Molemo").service("Brakes").car("Ford").build();
+        Services services = new Services.Builder("Molemo").serviceName("Brakes").car("Ford").build();
 
         return services;
     }

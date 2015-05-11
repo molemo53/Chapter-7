@@ -1,8 +1,8 @@
 package za.ac.cput.booking.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by student on 2015/04/15.
@@ -11,12 +11,20 @@ import java.io.Serializable;
 public class Invoice implements Serializable{
 
     @Id
-    private String invoiceNum;
-    private float amountOwed;
-    private float amountPaid;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-   private Customer customer;
+    private String date;
+    @Embedded
+    private Customer customer;
+
+    @Embedded
     private Vehicle vehicle;
+    @Embedded
+    private ServiceShop serviceShop;
+    @Embedded
+    private ServicePart servicePart;
+
 
     private Invoice()
     {
@@ -25,27 +33,28 @@ public class Invoice implements Serializable{
 
     public Invoice(Builder builder)
     {
-        this.invoiceNum=builder.invoiceNum;
-        this.amountOwed=builder.amountOwed;
-        this.amountPaid=builder.amountPaid;
+        this.id=builder.id;
+        this.date=builder.date;
+        this.serviceShop=builder.serviceShop;
+        this.servicePart=builder.servicePart;
         this.customer=builder.customer;
         this.vehicle=builder.vehicle;
 
     }
 
-    public String getInvoiceNum()
+    public Long getId()
     {
-        return invoiceNum;
+        return id;
     }
 
-    public float getAmountOwed()
+    public ServiceShop getServiceShop()
     {
-        return  amountOwed;
+        return serviceShop;
     }
 
-    public float getAmountPaid()
+    public ServicePart getServicePart()
     {
-        return  amountPaid;
+        return  servicePart;
     }
 
     public Customer getCustomer()
@@ -58,34 +67,43 @@ public class Invoice implements Serializable{
         return  vehicle;
     }
 
+    public String getDate() {return date;}
+
     public static class Builder
     {
-        private String invoiceNum;
-        private float amountOwed;
-        private float amountPaid;
+        private Long id;
+        private ServiceShop serviceShop;
+        private  ServicePart servicePart;
         private Customer customer;
         private Vehicle vehicle;
+        private String date;
 
-        public Builder(String invoiceNum)
+        public Builder(String date)
         {
-            this.invoiceNum=invoiceNum;
-        }
-
-        public Builder amountOwed(float value)
-        {
-            this.amountOwed=value;
-            return this;
-        }
-
-        public Builder amountPaid(float value)
-        {
-            this.amountPaid=value;
-            return this;
+            this.date=date;
         }
 
         public Builder customer(Customer value)
         {
             this.customer=value;
+            return this;
+        }
+
+        public Builder serviceShop(ServiceShop value)
+        {
+            this.serviceShop=value;
+            return this;
+        }
+
+        public Builder servicePart(ServicePart value)
+        {
+            this.servicePart=value;
+            return this;
+        }
+
+        public Builder id(Long value)
+        {
+            this.id=value;
             return this;
         }
 
@@ -97,9 +115,10 @@ public class Invoice implements Serializable{
 
         public Builder copy(Invoice value)
         {
-            this.invoiceNum=value.invoiceNum;
-            this.amountOwed=value.amountOwed;
-            this.amountPaid=value.amountPaid;
+            this.id=value.id;
+            this.date=value.date;
+            this.serviceShop=value.serviceShop;
+            this.servicePart=value.servicePart;
             this.vehicle=value.vehicle;
             this.customer=value.customer;
             return this;

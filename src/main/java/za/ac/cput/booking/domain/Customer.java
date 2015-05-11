@@ -1,6 +1,8 @@
 package za.ac.cput.booking.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 public class Customer {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstName;
     private String lastName;
@@ -25,8 +28,12 @@ public class Customer {
     public String getLastName() {
         return lastName;
     }
+    public Long getId() {
+        return id;
+    }
 
     public Customer(Builder builder){
+        id=builder.id;
         firstName=builder.firstName;
         lastName=builder.lastName;
 
@@ -48,7 +55,13 @@ public class Customer {
             return this;
         }
 
+        public Builder id(Long value){
+            this.id=value;
+            return this;
+        }
+
         public Builder copy(Customer value){
+            this.id=value.id;
             this.firstName=value.firstName;
             this.lastName=value.lastName;
             return this;
@@ -57,5 +70,13 @@ public class Customer {
         public Customer build(){
             return new Customer(this);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }

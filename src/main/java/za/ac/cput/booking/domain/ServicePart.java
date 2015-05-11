@@ -1,17 +1,16 @@
 package za.ac.cput.booking.domain;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by student on 2015/04/16.
  */
-@Embeddable
+@Entity
 public class ServicePart implements Serializable{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String itemPart;
     private float price;
@@ -29,6 +28,7 @@ public class ServicePart implements Serializable{
         return price;
     }
 
+    public Long getId(){return id;}
 
 
     public ServicePart(Builder builder)
@@ -75,5 +75,13 @@ public class ServicePart implements Serializable{
           return new ServicePart(this);
         }
 
+    }
+
+    @Override
+    public String toString() {
+        return "ServicePart{" +
+                "itemPart='" + itemPart + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
