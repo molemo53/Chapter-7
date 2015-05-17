@@ -54,17 +54,20 @@ public class Employee implements Serializable{
         private String lastName;
 
 
-        public Builder(String lastName) {
-            this.lastName = lastName;
+        public Builder(String firstName) {
+            this.firstName = firstName;
         }
 
-        public Builder firstName(String value){
-            this.firstName=value;
+
+
+        public Builder id(Long value)
+        {
+           this.id=value;
             return this;
         }
 
-        public Builder id(Long value){
-            this.id=value;
+        public Builder lastName(String value){
+            this.lastName=value;
             return this;
         }
 

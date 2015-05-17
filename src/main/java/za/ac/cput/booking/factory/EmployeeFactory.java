@@ -12,8 +12,8 @@ public class EmployeeFactory {
     public static Employee createEmployee(String lastName, String firstName)
     {
         Employee employee = new Employee
-                .Builder(lastName)
-                .firstName(firstName)
+                .Builder(firstName)
+                .lastName(lastName)
                 .build();
         return employee;
     }

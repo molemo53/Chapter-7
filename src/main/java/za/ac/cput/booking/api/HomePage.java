@@ -23,9 +23,9 @@ public class HomePage {
         return "This is a Home Page";
     }
 
-    @RequestMapping(value = "/course",method = RequestMethod.GET)
-    public Services getService(){
-        Services services = new Services.Builder("Molemo").serviceName("Brakes").car("Ford").build();
+    @RequestMapping(value = "serviceses",method = RequestMethod.GET)
+    public Services getServices(){
+        Services services = new Services.Builder("111").serviceName("Oil Filter").car("Bmw").build();
 
         return services;
     }

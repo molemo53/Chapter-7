@@ -1,36 +1,33 @@
-package za.ac.cput.booking.repository;
+package za.ac.cput.booking.service;
 
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Before;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import za.ac.cput.booking.App;
-import za.ac.cput.booking.domain.ServicePackage;
 import za.ac.cput.booking.domain.Services;
-import za.ac.cput.booking.factory.ServiceFactory;
 import za.ac.cput.booking.respository.ServiceRepository;
+import za.ac.cput.booking.services.ServiceService;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
- * Created by student on 2015/05/07.
+ * Created by student on 2015/05/17.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes= App.class)
 @WebAppConfiguration
-public class TestCrudServices  {
+public class ServicesTest {
+
+    private ServiceService service;
     private Long id;
     @Autowired
-    ServiceRepository repository;
+    private ServiceRepository repository;
+    private List<Services> serviceses;
 
     @Test
     public void create() throws Exception {
@@ -77,4 +74,11 @@ public class TestCrudServices  {
         Assert.assertNotNull(updateServices);
     }
 
+    @Test
+    public void testGetService() throws  Exception
+    {   //serviceses = new ArrayList<Services>();
+        serviceses = service.getServices(id);
+        Assert.assertTrue(serviceses.size()==1);
+
+    }
 }
